@@ -6,7 +6,6 @@ import com.inventory.RatingService.entity.Rating;
 import com.inventory.RatingService.repository.RatingRepository;
 import com.inventory.RatingService.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
