@@ -12,7 +12,7 @@ public interface RatingService {
 
     Response createRating(RatingDto ratingDto);
 
-    List<Rating> getRatings();
+    List<Rating> getRatings(Integer pageNo, Integer pageSize);
     List<Rating> getratingByUserId(Integer userId);
 
     List<Rating> getRatingByMeditionId(Integer meditionId);

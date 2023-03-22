@@ -22,8 +22,9 @@ public class RatigController {
     }
 
     @GetMapping("/getAll")
-    public List<Rating> getRatings(){
-        return ratingService.getRatings();
+    public List<Rating> getRatings(@RequestParam(defaultValue = "0") Integer pageNo,
+                                   @RequestParam(defaultValue = "10") Integer pageSize){
+        return ratingService.getRatings(pageNo,pageSize);
     }
 
     @GetMapping("/getByUserId/{id}")

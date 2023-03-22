@@ -6,10 +6,15 @@ import com.inventory.RatingService.entity.Rating;
 import com.inventory.RatingService.repository.RatingRepository;
 import com.inventory.RatingService.service.RatingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,8 +41,14 @@ public class RatingServiceImpl implements RatingService {
     }
 
     @Override
-    public List<Rating> getRatings() {
-        return ratingRepository.findAll();
+    public List<Rating> getRatings(Integer pageNo, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNo,pageSize);
+        Page<Rating> pagedRatings = ratingRepository.findAll(pageable);
+        if(pagedRatings.hasContent()){
+            return pagedRatings.getContent();
+        }else{
+            return new ArrayList<>();
+        }
     }
 
     @Override
